@@ -53,8 +53,26 @@ int main () {
         for (size_t i = 0; i < strlen(line); i++) { 
             if (line[i] == '(') {  
                 push(line[i]);
+                printf("parenthesis added to stack\n");
             } else if (line[i] == ')') {
                 pop();
+                printf("parenthesis removedfrom stack\n");
+            }
+
+            if (line[i] == '{') {  
+                push(line[i]);
+                printf("curly brace added to stack\n");
+            } else if (line[i] == '}') {
+                pop();
+                printf("curly brace removed from stack\n");
+            }
+
+            if (line[i] == '[') {  
+                push(line[i]);
+                printf("bracket added to stack\n");
+            } else if (line[i] == ']') {
+                pop();
+                printf("bracket removed from stack\n");
             }
         }
     }
