@@ -1,20 +1,42 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>  
+#include <string.h> 
 
 #define FN_LENGTH 100
 #define MAX_LENGTH 1000
 #define STACK_LIMIT 10
+#define SIZE 4  
+int top = -1, stack[SIZE];  
+
+void push(char x)  
+{  
+    if (top == SIZE - 1)  
+    {  
+        printf("\nOverflow");  
+    }  
+    else  
+    {  
+        top = top + 1;  
+        stack[top] = x;  
+    }  
+}  
+void pop()  
+{  
+    if (top == -1)  
+    {  
+        printf("\nUnderflow");  
+    }  
+    else  
+    {   
+        top = top - 1;  
+    }  
+}  
 
 int main () {
     FILE *file;
     char filename[FN_LENGTH];
     char line[MAX_LENGTH]; 
     int stack[STACK_LIMIT];
-    initialize(&stack); 
-
-// it doesn't like using initialize or pop or push idk why figure this out later
 
 
     printf("This filereader will read a file and check for balanced parentheses.\n");
@@ -30,15 +52,10 @@ int main () {
     while (fgets(line, sizeof(line), file) != NULL) {
         for (size_t i = 0; i < strlen(line); i++) { 
             if (line[i] == '(') {  
-                push(&stack, '('); // add to the stack
+                push(line[i]);
             } else if (line[i] == ')') {
-                pop(&stack) == -1;
-            } else {
-                printf("parentheses unbalanced");
-                break;
+                pop();
             }
-            // check for closing parentheses and then remove the element from the stack 
-            // if no closing parentheses is found, then break the loop and print out error
         }
     }
 
