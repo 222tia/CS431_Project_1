@@ -76,11 +76,15 @@ int main () {
 
     /*
     TODO:
-    1. make a function that returns true if the stack is empty and false if it's not by the end
-    of iterating through the file
-    2. if the function returns true, print an appropiate msg and if it returns false, then print
-    the line where the mismatch occured
-    3. figure out how to ignore (), [], and {} in comments
+    1. print out line where mismatch occured
+    2. figure out how to ignore (), [], and {} in comments
     */ 
+
     fclose(file);
+
+    if (top == -1) {
+        printf("all matched");
+    } else {
+        printf("mismatch");
+    }
 }
